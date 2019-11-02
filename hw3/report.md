@@ -81,9 +81,38 @@ My student ID is 16327109, so I choose "09.png" as my input.
 
 ### 2.1
 
+1. Perform DFT and manually paste the (centered) Fourier spectrum on your report. (10
+   Points)
 
+   
 
+2. Perform IDFT on the result of the last question, and paste the real part on your report.
+    Note: the real part should be very similar to your input image. (Why? Think about it.) (10
+    Points)
 
+  
+
+3. Detailed discuss how you implement DFT / IDFT in less than 2 pages. Please focus on
+    the algorithm part. Don’t widely copy/paste your codes in the report, since your codes
+    are also submitted. 
+
+To reduce time complexity of DFT/IDFT, we have to separate the 2-D DFT into 1-D transforms. We can write as
+$$
+F(u,v)=\sum_{x=0}^{M-1}e^{-j2\pi ux/M}\sum_{y=0}^{N-1}f(x,y)e^{-j2\pi vy/N}=\sum_{x=0}^{M-1}F(x,v)e^{-j2\pi ux/M}
+$$
+By doing this, we reduce the time complexity of $O(M^2N^2)$ to $O(MN(M+N))$.
+
+We first apply 1-D DFT/IDFT of a row of f(x,y). By varying x from 0 to M-1, we compute a set of 1-D DFTs for all rows of f(x,y). Then we apply 1-D transforms of the columns of F(x,v).
+
+DFT and IDFT are only different on the sign of $e^{j2\pi x/M}$, so we can only change the sign of exponent to do DFT or IDFT.
+
+run method
+
+```
+python dtf.py 0
+```
+
+0 for DFT, 1 for IDFT
 
 ### 2.2
 
