@@ -32,6 +32,7 @@ $$
 \begin{aligned}
 &F(-u+M/2,-v+N/2)\\
 =&F((-u+M)-M/2,(-v+N)-N/2)\\
+=&F(-u-M/2,-v-N/2) \\
 \Leftrightarrow&f(-x+M,-y+N)(-1)^{x+y}
 \end{aligned}
 $$
@@ -119,10 +120,16 @@ DFT and IDFT are only different on the sign of $e^{j2\pi x/M}$, so we can only c
 run method
 
 ```
-python dtf.py 0
+python dft.py inputFilename outputFilename mode
 ```
 
 0 for DFT, 1 for IDFT
+
+for instance
+
+```
+python dft.py ../pic/09.png ../pic/09dft.png 0
+```
 
 
 
@@ -157,5 +164,54 @@ $$
 
 An M-point transform can be computed by dividing the original expression into two parts. Computing the first half of F(u) requires evaluation of the two (M/2)-point transforms of $F_{even}$ and $F_{odd}$. The resulting values of $F_{even}(u)$ and $F_{odd}(u)$ are then to obtain F(u) for u =0,1,2, ..., (M/2-1). The other half then follows directly from $F(u+K)$ without additional transform evaluation.
 
+4. 
+
+We first apply 1-D FFT/IFFT of a row of f(x,y). By varying x from 0 to M-1, we compute a set of 1-D FFTs for all rows of f(x,y). Then we apply 1-D transforms of the columns of F(x,v).
+
+FFT and IFFT are only different on the sign of $e^{j2\pi x/M}$, so we can change the sign of exponent to do FFT or IFFT.
+
+run method
+
+```
+python fft.py inputFilename outputFilename mode
+```
+
+0 for DFT, 1 for IDFT
+
+for instance
+
+```
+python fft.py ../pic/09.png ../pic/09fft.png 0
+```
+
+
+
 ### 2.3
 
+1.
+
+![](./pic/09smooth.png)
+
+2.
+
+![](./pic/09sharpen.png)
+
+3.
+
+According to the convolution theorem, filtering in the frequency domain is equivalent to apply FT to the given image and filter, and then multiply them, followed by IDFT / IFFT to get the filtered result.
+
+So I first use zero-padding to pad the filter and image to the same size, then use FFT to get Flourier transform of each. Multiply them and use IFFT to get the filtered result at last.
+
+run method
+
+```
+python filter.py inputFilename outputFilename mode
+```
+
+0 for smooth, 1 for sharpen
+
+for instance
+
+```
+python filter.py ../pic/09.png ../pic/09smooth.png 0
+```
