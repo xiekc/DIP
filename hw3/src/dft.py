@@ -1,9 +1,7 @@
 from PIL import Image
-import matplotlib.pyplot as plt
 import sys
 import math
 import numpy as np
-
 
 class DFT:
     def dft1d(self, array, sign):
@@ -66,9 +64,8 @@ class DFT:
 
 
 if __name__ == '__main__':
-    filename = '../pic/09.png'
-    img = Image.open(filename)
-    mode = int(sys.argv[1])
+    img = Image.open(sys.argv[1])
+    mode = int(sys.argv[3])
     f = DFT()
     outputImg = f.dft2d(img, mode)
-    outputImg.save('../pic/testidft.png')
+    outputImg.save(sys.argv[2])

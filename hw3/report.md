@@ -83,14 +83,24 @@ My student ID is 16327109, so I choose "09.png" as my input.
 
 1. Perform DFT and manually paste the (centered) Fourier spectrum on your report. (10
    Points)
-
    
+   original image
+   
+   ![](./pic/09.png)
 
+   DFT (centered and log transform)
+   
+   ![](./pic/09dft.png)
+   
 2. Perform IDFT on the result of the last question, and paste the real part on your report.
     Note: the real part should be very similar to your input image. (Why? Think about it.) (10
     Points)
 
-  
+    IDFT
+
+  ![](./pic/09idft.png)
+
+For Fourier transform is reversible, we can get original image only containing real part. For DFT, we can  get approximately original image which is very similar to input image.
 
 3. Detailed discuss how you implement DFT / IDFT in less than 2 pages. Please focus on
     the algorithm part. Don’t widely copy/paste your codes in the report, since your codes
@@ -114,11 +124,38 @@ python dtf.py 0
 
 0 for DFT, 1 for IDFT
 
+
+
 ### 2.2
 
+1. 
 
+zero padding
 
+![](./pic/09zeroPadding.png)
 
+FFT (centered and log transform)
+
+![](./pic/09fft.png)
+
+2. 
+
+IFFT
+
+![](./pic/09ifft.png)
+
+3.
+
+FFT exploits the symmetry of DFT
+$$
+F(u)=F_{even}(u)+F_{odd}(u)W_{2K}^u
+$$
+
+$$
+F(u+K)=F_{even}(u)-F_{odd}(u)W_{2K}^u
+$$
+
+An M-point transform can be computed by dividing the original expression into two parts. Computing the first half of F(u) requires evaluation of the two (M/2)-point transforms of $F_{even}$ and $F_{odd}$. The resulting values of $F_{even}(u)$ and $F_{odd}(u)$ are then to obtain F(u) for u =0,1,2, ..., (M/2-1). The other half then follows directly from $F(u+K)$ without additional transform evaluation.
 
 ### 2.3
 
