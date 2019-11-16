@@ -75,15 +75,56 @@ My student ID is 16327109, so I take "09.png" as my input.
 
 1.
 
+the original image
 
+![](./img/09.png)
+
+The RGB histograms
+
+| R                      | G                      | B                      |
+| ---------------------- | ---------------------- | ---------------------- |
+| ![](./img/hist1_0.png) | ![](./img/hist1_1.png) | ![](./img/hist1_2.png) |
+
+
+
+the processed image A
+
+![](./img/img1.png)
+
+The RGB histograms
+
+| R                      | G                      | B                      |
+| ---------------------- | ---------------------- | ---------------------- |
+| ![](./img/hist2_0.png) | ![](./img/hist2_1.png) | ![](./img/hist2_2.png) |
 
 2.
 
+The processed image B
 
+![](./img/img2.png)
+
+The RGB histograms
+
+| R                      | G                      | B                      |
+| ---------------------- | ---------------------- | ---------------------- |
+| ![](./img/hist3_0.png) | ![](./img/hist3_1.png) | ![](./img/hist3_2.png) |
 
 3.
 
+The processed image C
 
+![](./img/img3.png)
+
+The RGB histograms
+
+| R                      | G                      | B                      |
+| ---------------------- | ---------------------- | ---------------------- |
+| ![](./img/hist4_0.png) | ![](./img/hist4_1.png) | ![](./img/hist4_2.png) |
 
 4.
 
+Let A=the image in (1), B= the image in (2), C= the image in (3)
+
+We notice that A is very similar with B, for the RGB components are similar so the overall histogram is similar with each RGB histogram. There are some slight differences which can be seen on the histogram after processed.
+
+Processed in RGB components, the colors of A,B are changed slightly and not so saturated as before, while C keeps the original hue and saturation so result is the best. For instance, the blue on the car on C looks better than A and B.

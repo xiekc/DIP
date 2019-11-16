@@ -25,7 +25,6 @@ def equalize_hist(img):
         if i > 0:
             accumulation[i] += accumulation[i-1]
 
-    pdf = [0 for i in range(256)]
     for i in range(width):
         for j in range(height):
             px[i, j] = int((255)/(width*height)*accumulation[px[i, j]])
