@@ -125,6 +125,17 @@ The RGB histograms
 
 Let A=the image in (1), B= the image in (2), C= the image in (3)
 
-We notice that A is very similar with B, for the RGB components are similar so the overall histogram is similar with each RGB histogram. There are some slight differences which can be seen on the histogram after processed.
+We notice that B is very similar with C, for we deal with the overall histogram is similar to deal with intensity histogram as $intensity=1/3*(R+G+B)$. There are some slight differences which can be seen on the histogram after processed.
 
-Processed in RGB components, the colors of A,B are changed slightly and not so saturated as before, while C keeps the original hue and saturation so result is the best. For instance, the blue on the car on C looks better than A and B.
+Processed on RGB components, the colors of A,B are changed slightly and not so saturated as before, while C keeps the original hue and saturation so result is the best. For instance, the blue on the car on C looks better than B and much better than B.
+
+
+
+#### Run Method
+
+Enter the directory src/
+
+```
+python histEqualization.py
+```
+

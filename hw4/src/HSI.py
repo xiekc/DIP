@@ -42,8 +42,8 @@ def hsi2rgb(hsi):
 
 
 def img2hsi(img):
-    img_f = img.copy()
-    px = img_f.load()
+    imgCopy = img.copy()
+    px = imgCopy.load()
     width, height = img.size
     HSI = [[[0 for i in range(height)]for j in range(width)]for k in range(3)]
 

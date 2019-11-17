@@ -23,9 +23,9 @@ def histgram1d(arr):
 
 
 def equalize_hist(img):
-    img_f = img.copy()
-    px = img_f.load()
-    pdf = histgram3d(img_f)
+    imgCopy = img.copy()
+    px = imgCopy.load()
+    pdf = histgram3d(imgCopy)
     width, height = img.size
     accumulation = [[0 for i in range(256)]for j in range(3)]
     for k in range(3):
@@ -40,13 +40,13 @@ def equalize_hist(img):
                         int((255)/(width*height)*accumulation[1][px[i, j][1]]),
                         int((255)/(width*height)*accumulation[2][px[i, j][2]]))
 
-    return img_f
+    return imgCopy
 
 
 def equalize_hist_average(img):
-    img_f = img.copy()
-    px = img_f.load()
-    pdf = histgram3d(img_f)
+    imgCopy = img.copy()
+    px = imgCopy.load()
+    pdf = histgram3d(imgCopy)
     width, height = img.size
     accumulation = [0 for i in range(256)]
     for i in range(len(pdf[0])):
@@ -62,14 +62,14 @@ def equalize_hist_average(img):
                         int((255)/(width*height)*accumulation[px[i, j][1]]),
                         int((255)/(width*height)*accumulation[px[i, j][2]]))
 
-    return img_f
+    return imgCopy
 
 def equalize_hist_HSI(img):
-    img_f = img.copy()
-    px = img_f.load()
+    imgCopy = img.copy()
+    px = imgCopy.load()
     width, height = img.size
 
-    HSI=img2hsi(img_f)
+    HSI=img2hsi(imgCopy)
     pdf = [0 for i in range(256)]
     for i in range(width):
         for j in range(height):
@@ -99,18 +99,18 @@ if __name__ == '__main__':
         plt.close()
 
     # (2)Equalize the histogram
-    img = equalize_hist(img)
-    img.save('../img/img1.png')
-    pdf = histgram3d(img)
+    imgCopy = equalize_hist(img)
+    imgCopy.save('../img/img1.png')
+    pdf = histgram3d(imgCopy)
     for j in range(3):
         plt.bar([i for i in range(256)], pdf[j], width=1)
         plt.savefig('../img/hist2'+'_'+str(j)+'.png')
         plt.close()
 
     # (3)average histogram
-    img = equalize_hist_average(img)
-    img.save('../img/img2.png')
-    pdf = histgram3d(img)
+    imgCopy = equalize_hist_average(img)
+    imgCopy.save('../img/img2.png')
+    pdf = histgram3d(imgCopy)
     for j in range(3):
         plt.bar([i for i in range(256)], pdf[j], width=1)
         plt.savefig('../img/hist3'+'_'+str(j)+'.png')
@@ -118,9 +118,9 @@ if __name__ == '__main__':
 
     # (4)perform histogram equalization on the intensity channel
     # img.thumbnail((10,10))
-    img = equalize_hist_HSI(img)
-    img.save('../img/img3.png')
-    pdf = histgram3d(img)
+    imgCopy = equalize_hist_HSI(img)
+    imgCopy.save('../img/img3.png')
+    pdf = histgram3d(imgCopy)
     for j in range(3):
         plt.bar([i for i in range(256)], pdf[j], width=1)
         plt.savefig('../img/hist4'+'_'+str(j)+'.png')
